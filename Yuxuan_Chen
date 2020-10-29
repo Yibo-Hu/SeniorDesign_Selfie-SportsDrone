@@ -1,0 +1,31 @@
+ import cv2
+ import numpy as np
+
+camera = cv2.VideoCapture(0) # 0代表本机自带摄像头
+
+while camera.isOpened():
+ret, frame = camera.read()# 读取摄像头的数据 frame为画面 ret 为标识
+
+frame = cv2.bilateralFilter(frame, 5, 50, 100)  # 双边滤波
+frame = cv2.flip(frame, 1)  # 图片翻转   Y轴翻转
+cv2.rectangle(frame, (int(cap_region_x_begin * frame.shape[1]), 0),
+              (frame.shape[1], int(cap_region_y_end * frame.shape[0])),       (255, 0, 0), 2)   # 画框框
+cv2.imshow('original', frame)
+
+bgModel = cv2.createBackgroundSubtractorMOG2(50, bgSubThreshold)
+
+fgmask = bgModel.apply(frame) # 提取前景
+kernel = np.ones((3, 3), np.uint8)
+fgmask = cv2.erode(fgmask, kernel, iterations=1) # 腐蚀
+res = cv2.bitwise_and(frame, frame, mask=fgmask) # 和运算
+
+_, contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)  # 拟合轮廓
+
+for i in range(length):  # 找到面积最大的轮廓
+    res = contours[ci]
+hull = cv2.convexHull(res)  # 寻找凸包，就是凸出来的点
+drawing = np.zeros(img.shape, np.uint8)
+cv2.drawContours(drawing, [res], 0, (0, 255, 0), 2)  # 画出轮廓
+cv2.drawContours(drawing, [hull], 0, (0, 0, 255), 3)
+
+
