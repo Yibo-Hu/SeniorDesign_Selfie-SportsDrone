@@ -1,0 +1,9 @@
+ Bernoulli's principle tells us that in a flow, if the velocity is low, then the pressure is high; if the velocity is high, then the pressure is low. 
+ That would explain why the drone flies in the air, since it receives the upward lift. When drone flies, the streamlines above and below the wing are not evenly distributed. 
+ The streamlines above the wing are dense and the flow rate is high. And the bottom is the opposite. Bernoulli's equation tells us that the pressure on the top of the wing is low and the pressure on the bottom is high. 
+ This creates upward lift.
+ 
+ V^2/2+gz+P/p=constant
+ 
+ v is the fluid flow speed at a point on a streamline,g is the acceleration due to gravity,z is the elevation of the point above a reference plane, with the positive z-direction pointing upward – so in the direction opposite to the gravitational acceleration,
+ p is the pressure at the chosen point, andρ is the density of the fluid at all points in the fluid.  （from wikipedia）
